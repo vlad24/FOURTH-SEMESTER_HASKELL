@@ -9,7 +9,7 @@ generateTwoPowers n = powerChopper [] (2^n)
 --
 main :: IO ()
 main = do
-    putStr("Enter the length of your future list of powers of two : ")
+    putStr("Enter the max degree of your future list of powers of two : ")
     n <- readLn
     putStr("Your list: ")
     print(generateTwoPowers(n))
