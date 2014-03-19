@@ -1,0 +1,5 @@
+Tree t = Leaf t | Node (Tree t) t (Tree t)
+
+foldlTree :: (a -> t -> a) -> a -> (Tree t)   ->   a
+foldlTree f accumulator (Leaf t) = f accumulator t
+foldlTree f accumulator (Node treeLeft t treeRight) = foldlTree f (f (foldlTree f accumulator treeLeft) t) treeRight
