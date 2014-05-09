@@ -54,6 +54,12 @@ treeHeight :: Tree a -> Int
 treeHeight EmptyTree = 0
 treeHeight (Node treeLeft a treeRight) = 1 + max  (treeHeight treeLeft) (treeHeight treeRight)
 
+search :: Ord a => Tree a -> a -> Bool
+search EmptyTree value = False
+search (Node treeLeft a treeRight) value | (value > a) = search treeRight value
+                                                         | (value < a) = search treeLeft value
+                                                         | (value == a) = True
+
 main = do
 let t = Node (Node EmptyTree 0 (Node EmptyTree 2 EmptyTree)) 3 (EmptyTree)
 printTree t
