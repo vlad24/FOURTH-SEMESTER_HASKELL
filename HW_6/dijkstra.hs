@@ -16,7 +16,7 @@ findMinVertex (v:vs) = findMin (v:vs) inf v where
                                                                                     | otherwise = findMin vs min candidate
 
 --Find out whether two given verteces are neighbours
-isNeighbours v1 v2 edges | (getEdge v1 v2 edges == Nothing) = False
+areNeighbours v1 v2 edges | (getEdge v1 v2 edges == Nothing) = False
                                     | otherwise = True
 
 --Try to find an edge connecting two given vertices
@@ -30,7 +30,7 @@ pop (l:ls) v    | (fst v == fst l) = ls
                    | otherwise = l:(pop ls v)
 
 --Trying to change distances of the incident vertices
-relaxed distancesList minVertex edges = map (\v -> if (isNeighbours minVertex v edges) then 
+relaxed distancesList minVertex edges = map (\v -> if (areNeighbours minVertex v edges) then 
                                                                               ( fst v, min (snd v) (snd minVertex + weight (getEdge minVertex v edges)) ) 
                                                                          else v) distancesList
 
