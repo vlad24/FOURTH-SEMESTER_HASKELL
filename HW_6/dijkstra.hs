@@ -1,7 +1,5 @@
 import Data.Maybe
 import Data.List
-import Data.Maybe
-import Data.List
 
 inf = 1/0
 --
@@ -22,7 +20,7 @@ isNeighbours v1 v2 edges | (getEdge v1 v2 edges == Nothing) = False
                                     | otherwise = True
 
 --Try to find an edge connecting two given vertices
-getEdge  v1 v2 edges = getRightEdge (filter ( \(a,b,_) -> fst v1 == a && fst v2 == b || fst v1 == b && fst v2 == a) edges) where
+getEdge  v1 v2 edges = getRightEdge (filter ( \(a,b,_) -> (fst v1 == a) && (fst v2 == b) || (fst v1 == b) && (fst v2 == a)) edges) where
                               getRightEdge [] = Nothing
                               getRightEdge (x:xs) = Just x
 
